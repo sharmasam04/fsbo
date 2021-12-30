@@ -1,0 +1,22 @@
+<div class="uploadFile">
+  <form #batchUpload="ngForm" class="normForm" fxLayout="column">
+    <div fxLayout="column">
+      <h4>Upload Customer Data File: </h4>
+      <div class="dropbox" (dragover)="preventDefaultAndStopPropagation($event)" (dragleave)="preventDefaultAndStopPropagation($event)" (drop)="preventDefaultAndStopPropagation($event)" fxFlex="80">
+        <!-- your drag/drop box within the page -->
+        <div (dragleave)="onDragFileOverEnd($event)" (drop)="onDragFileDrop($event)" (dragover)="onDragFileOverStart($event)" fxLayout="column" fxLayoutAlign="center center">
+          <div class="cloudImage"></div>
+          <!-- stuff goes here, or you can use ng-content to embed other components -->
+          <span>{{ fileName }}</span>
+          <!--      <label for="file-input" class="mat-button mat-primary" matTooltip="Choose File"><span>Browse</span></label>-->
+          <button fxFlex="none" mat-raised-button type="button" (click)="fileinput.click()" style="margin-bottom:35px; width:100px;">Browse</button>
+          <input id="file-input" type="file" #fileinput multiple="false" [hidden]="true" (change)="fileEvent($event)" style="width:100%; height:100%;" />
+        </div>
+      </div>
+      <div style="margin-bottom:10px;" fxLayoutAlign="center center">
+        <button fxFlex="none" color="primary" mat-raised-button type="button" (click)="upload()" color="primary" style="margin-bottom:35px; width:200px;">Upload</button>
+      </div>
+    </div>
+  </form>
+</div>
+<span *ngIf="showLoad" class="loading"></span>

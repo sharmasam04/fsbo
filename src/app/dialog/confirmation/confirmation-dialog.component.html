@@ -1,0 +1,9 @@
+<div class="confirmationDialog" fxLayout='column'>
+	<div fxFlex='50' fxLayoutAlign='center center' fxLayout='column'>
+		<div class="textContainer">{{message}}</div>
+	</div>
+	<div fxLayout='row' fxLayoutAlign='space-around center' fxFlex='50'>
+        <button mat-raised-button color="primary" type="button" (click)="confirm()">YES</button>
+		<button mat-raised-button type="button" (click)="cancel()">NO</button>
+	</div>
+</div>

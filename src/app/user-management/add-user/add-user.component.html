@@ -1,0 +1,66 @@
+<div>
+  <div fxLayout="column" fxLayoutAlign="center center" *ngIf="mode != 'reset'">
+    <form #userForm="ngForm" class="dialogForm" fxLayout="column">
+      <h3 class="subheader" color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        User Management
+      </h3>
+      <div style="padding: 20px;">
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" required placeholder="Name" [(ngModel)]="model.Name" name="name" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" required placeholder="Username" [(ngModel)]="model.LoginID" name="loginId" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center" *ngIf="mode == 'add'">
+          <mat-form-field>
+            <input matInput type="text" required placeholder="Password" [(ngModel)]="model.Password" name="password" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="Role" [(ngModel)]="model.Role" name="role" required>
+              <mat-option *ngFor="let role of Roles" [value]="role.value">
+                {{ role.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center" *ngIf="mode == 'edit'">
+          <mat-form-field>
+            <mat-select placeholder="Status" [(ngModel)]="model.Status" name="status" required>
+              <mat-option *ngFor="let sts of Statuses" [value]="sts.value">
+                {{ sts.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="buttonContainer" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button type="button" (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="update()">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center" *ngIf="mode == 'reset'">
+    <form #userForm="ngForm" class="dialogForm" fxLayout="column">
+      <h3 class="subheader" color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        Reset Password
+      </h3>
+      <div style="padding: 20px;">
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" required placeholder="Password" [(ngModel)]="model.Password" name="password" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="buttonContainer" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button type="button" (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="reset()">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

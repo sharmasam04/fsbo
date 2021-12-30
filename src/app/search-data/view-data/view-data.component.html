@@ -1,0 +1,59 @@
+<div fxLayout="column" class="details" style="margin: 10px 20px;font-size: small;">
+  <div fxLayout="row" fxLayoutAlign="space-between end" style="margin-bottom: 1em;">
+    <table style="width: 60vw;">
+      <tr>
+        <th colspan="2" style="font-size: large;">Personal Details</th>
+      </tr>
+      <tr>
+        <td style="width: 150px;">Phone No</td>
+        <td style="width: 200px;">: {{model.PhoneNo}}</td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">Name</td>
+        <td style="width: 200px;">: {{model.FullName}}</td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">IC NO</td>
+        <td style="width: 200px;">: {{model.ICNo}}</td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">Post Code</td>
+        <td style="width: 200px;">: {{model.PostCode}}</td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">Gender</td>
+        <td style="width: 200px;">: {{model.Gender}}</td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">State</td>
+        <td style="width: 200px;">: {{model.State}}</td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">Race</td>
+        <td style="width: 200px;">: {{model.Race}} </td>
+      </tr>
+      <tr>
+        <td style="width: 150px;">Address</td>
+        <td style="width: 200px;">: {{model.Add1}}, {{model.Add2}}, {{model.Add3}}</td>
+      </tr>
+    </table>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form #updateForm="ngForm" class="dialogForm" fxLayout="column">
+      <div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-label>Remarks</mat-label>
+            <textarea matInput placeholder="Wrong info/contact given, pls comment here" required [(ngModel)]="comment.Remarks" name="remarks"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="buttonContainer" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button type="button" (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="update(updateForm)">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <span *ngIf="showLoad" class="loading"></span>

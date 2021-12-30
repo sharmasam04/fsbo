@@ -1,0 +1,15 @@
+div.alertDialog {
+  min-height: 150px;
+  width: 350px;
+  max-height: 500px;
+}
+
+  div.alertDialog div.textContainer {
+    padding: 21px;
+  }
+
+div.textContent {
+  display: block;
+  text-align: center;
+  overflow-wrap: break-word;
+}

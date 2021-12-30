@@ -1,0 +1,80 @@
+<div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form #filterForm="ngForm" class="dialogForm" fxLayout="column">
+      <h3 class="subheader" color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        Search Data Filter
+      </h3>
+      <div style="padding: 20px;">
+        <!--<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Date" name="dtFrom" [(ngModel)]="model.date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>-->
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="number" placeholder="Phone No" [(ngModel)]="model.PhoneNo" name="phoneno" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Full Name" [(ngModel)]="model.FullName" name="fullname" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Address Keyword" [(ngModel)]="model.Addresskeywords" name="address" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="number" placeholder="Post Code" [(ngModel)]="model.PostCode" name="postcode" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="State" [(ngModel)]="model.State" name="state">
+              <mat-option *ngFor="let state of States" [value]="state.value">
+                {{ state.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="number" placeholder="IC NO" [(ngModel)]="model.ICNo" name="icNO" />
+          </mat-form-field>
+        </div>
+        <!--<div fxLayoutAlign="center center">
+    <mat-form-field>
+      <input matInput type="number" placeholder="Age" [(ngModel)]="model.Age" name="age" />
+    </mat-form-field>
+  </div>-->
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="Gender" [(ngModel)]="model.Gender" name="stgenderate">
+              <mat-option *ngFor="let gender of Genders" [value]="gender.value">
+                {{ gender.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="Race" [(ngModel)]="model.Race" name="race">
+              <mat-option *ngFor="let race of Races" [value]="race.value">
+                {{ race.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <span *ngIf="showError" style="padding-left: 20px;color: red;">{{errorMessage}}</span>
+      <div class="buttonContainer" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button type="button" (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="update()">Search</button>
+      </div>
+    </form>
+  </div>
+</div>

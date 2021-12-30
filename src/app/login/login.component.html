@@ -1,0 +1,28 @@
+<div class="container loginForm" *ngIf="!showLoginPage">
+    
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="center">
+    	
+            <div style="display:table-cell; vertical-align:middle; text-align:center; padding-top:8px;">
+                <h2 style="font-size:40px;padding-top: 10px;">FSBO</h2>
+            </div>
+
+        
+    </mat-toolbar>
+    <form (ngSubmit)="login()">
+      <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="model.username" name="username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="model.password" name="password">
+      </mat-form-field>
+      <div class="alert alert-danger fade" [ngClass]="{'hide': !showError}">
+        {{errorMessage}}
+      </div>
+      <!--<re-captcha (resolved)="resolved($event)" (error)="onError($event)" errorMode="handled" siteKey="6LeAeQ8aAAAAAF26mGQ9nLaLnujHnCxgJP-EhDkv" style="padding:20px"> </re-captcha>-->
+
+      <button mat-raised-button type="submit"color="primary" style="color:white" >Login</button>
+
+      </form>
+  </div>
+
+  <span *ngIf="showLoad" class="loading"></span>

@@ -1,0 +1,8 @@
+div.confirmationDialog {
+	min-height: 150px;
+	min-width: 350px
+}
+
+div.confirmationDialog div.textContainer {
+	padding: 10px;
+}

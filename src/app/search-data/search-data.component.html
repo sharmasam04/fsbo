@@ -1,0 +1,67 @@
+
+<div fxLayout="column">
+  <div class="align-horizontally">
+    <div fxFlex=50 fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field style="width:80%;padding: 0 20px;">
+        <input class="cont" matInput placeholder="Filter" name="contName" (keyup)='applyFilter($event.target.value)'>
+      </mat-form-field>
+    </div>
+    <div fxFlex=50 fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end center" style="padding: 1em 0 1em 0;">
+      <button mat-raised-button type="button" (click)="filterSearch()" color="primary">Search Data</button>
+    </div>
+  </div>
+  <div class="table-container mat-elevation-z8" [scrollTop]="scrollTopPosition" (scroll)="onScroll($event)">
+
+    <mat-table *ngIf="dataSource" [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+      <ng-container *ngFor="let column of columnList;" matColumnDef="{{ column.key }}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [ngSwitch]="column.key" style="font-weight: bold;font-size: 15px;">
+          {{ column.title }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" [ngSwitch]="column.key">
+          <span *ngIf="column.key != 'IsUsertobeNotifed'">{{ row[column.key] }}</span>
+          <span *ngIf="column.key == 'IsUsertobeNotifed'" style="padding-left: 40px;">
+            <mat-icon *ngIf="row[column.key]">done</mat-icon>
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <!--groupedColumn -->
+
+      <ng-container matColumnDef="filter">
+        <mat-header-cell *matHeaderCellDef colspan="1">
+          <button mat-icon-button matTooltip="Filter" (click)="openFilter()">
+            <mat-icon>filter_list</mat-icon>
+          </button>
+          <mat-form-field style="width: 40%;">
+            <input matInput type="text" [(ngModel)]="filterLabel" readonly="true">
+          </mat-form-field>
+        </mat-header-cell>
+      </ng-container>
+      <ng-container matColumnDef="action" *ngIf="role == 'Admin'">
+        <mat-header-cell class="last-cell" *matHeaderCellDef style="font-weight: bold;font-size: 15px;">Details</mat-header-cell>
+        <mat-cell class="last-cell" *matCellDef="let row" (click)="$event.stopPropagation()">
+          <button class="btn-edit" matTooltip="Edit Data" (click)="editData(row)" style="margin-right: 10px;">
+            Edit Details
+          </button>
+          <button class="btn-edit" matTooltip="Delete Data" (click)="deleteListing(row.ListingID)" style="margin-right: 10px;">
+            Delete Details
+          </button>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action" *ngIf="role == 'Agent'">
+        <mat-header-cell class="last-cell" *matHeaderCellDef style="font-weight: bold;font-size: 15px;">Details</mat-header-cell>
+        <mat-cell class="last-cell" *matCellDef="let row" (click)="$event.stopPropagation()">
+          <button class="btn-edit" matTooltip="View Data" (click)="viewData(row)">
+            View Details
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;" class="headerSpacing"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" style="min-height: 40px;"></mat-row>
+    </mat-table>
+    <mat-paginator fxLayout="row" fxLayoutAlign="end end" #paginator [pageSize]="model.pageSize" [pageSizeOptions]="[25, 100]" [length]="countTotal" [pageIndex]="currentPage" [showFirstLastButtons]="true"></mat-paginator>
+  </div>
+
+</div>
+<span *ngIf="showLoad" class="loading"></span>          

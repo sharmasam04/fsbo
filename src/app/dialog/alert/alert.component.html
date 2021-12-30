@@ -1,0 +1,13 @@
+<div class="alertDialog" fxLayout="column">
+  <div class="textContent">
+    <div class="textContainer">{{message}}</div>
+    <div class="textContainer" fxLayoutAlign="space-evenly start" fxLayout="column" *ngIf="content">
+      <div *ngFor="let c of content; let i=index"> {{i+1}} . {{c}} </div>
+    </div>
+    <small *ngIf="copied">Copied!</small>
+  </div>
+  <div class="textContainer" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-raised-button color="primary" type="button" (click)="ok()">{{buttonTxt}}</button>
+    <button mat-raised-button color="primary" type="button" *ngIf="allowCopy" (click)="copy()">Copy</button>
+  </div>
+</div>

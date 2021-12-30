@@ -1,0 +1,47 @@
+<div class="HomeToolbar">
+  <mat-toolbar color="primary">
+    <div class="mat-toolbar-layout" fxLayout="row">
+      <button mat-icon-button class="example-icon" id="sideNavMenu" name="sideNavMenu" aria-label="sideNavManu" (click)="sidenav.toggle()" *ngIf="role == 'Admin'">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <div [ngClass]="showIt? 'title' :''">
+     <img src="assets/suriatel.png" style="width: 150px;height: 30px;">
+   </div>-->
+      <span>Welcome to FSBO System</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button (click)="this.router.navigateByUrl('/home')" style="width:100px">
+        <mat-icon>home</mat-icon> Home
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="settingsMenu" style="width:100px">
+        <mat-icon>person</mat-icon> My Account
+      </button>
+      <mat-menu #settingsMenu="matMenu" class="my-full-width-menu">
+        <button mat-menu-item (click)="resetPassword()">Change Password</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+</div>
+<mat-sidenav-container fullscreen class="sidenav-container" style="top: 50px !important;">
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list style="padding-top: 0px !important">
+      <a mat-list-item (click)="openMenu('User Management');sidenav.close();">User Management</a>
+    </mat-nav-list>
+    <mat-nav-list style="padding-top: 0px !important">
+      <a mat-list-item (click)="openMenu('Upload File');sidenav.close();">Upload File</a>
+    </mat-nav-list>
+    <mat-nav-list style="padding-top: 0px !important">
+      <a mat-list-item (click)="openMenu('Search Data');sidenav.close();">Search Data</a>
+    </mat-nav-list>
+    <mat-nav-list style="padding-top: 0px !important" *ngIf="this.role  == 'Admin'">
+      <a mat-list-item (click)="openMenu('Comment List');sidenav.close();">Comment List</a>
+    </mat-nav-list>
+  </mat-sidenav>
+	<span style="height:100%">
+		<div class="home-content" fxFlex fxLayoutAlign="center stretch">
+		  <mat-card style="width: 90%;height: auto;overflow:hidden">
+			<router-outlet></router-outlet>
+		  </mat-card>
+		</div>
+	</span>
+</mat-sidenav-container>

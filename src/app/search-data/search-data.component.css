@@ -1,0 +1,145 @@
+.actionStyle {
+  flex: 0 0 8% !important;
+  justify-content: flex-end;
+}
+
+.fullsize {
+  width: 80%;
+}
+
+.table-container {
+  height: 85vh;
+  overflow: auto;
+}
+
+.filterLabel {
+  margin-right: auto;
+}
+
+@media (max-height: 780px) {
+  .table-container {
+    height: 79vh;
+    overflow: auto;
+  }
+}
+
+.headerSpacing {
+  min-height: 28px;
+  top: 0px !important;
+}
+
+.first-cell {
+  flex: 0 0 30px;
+  padding-left: 15px !important;
+}
+
+.last-cell {
+  padding-right: 0px !important;
+  justify-content: center;
+  text-align: center;
+}
+
+.headerSpacing2 {
+  min-height: 28px;
+  top: 50px !important;
+}
+
+button.btnExport {
+  background-color: #761fa2;
+  color: white;
+}
+
+.searchAlign {
+  justify-content: flex-end;
+}
+
+.first-cell {
+  flex: 0 0 2%;
+  padding-left: 15px !important;
+}
+
+.groupHeader {
+  min-height: 28px;
+}
+
+mat-header-cell.buttonExport {
+  justify-content: flex-end;
+  flex: 90px 0 0;
+}
+
+div.buttonContainer button {
+  margin: 10px 5px 8px 5px;
+}
+
+div.history {
+  padding: 8px 8px 8px 8px;
+}
+
+h3 {
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-bottom: 12px;
+}
+
+
+div.buttonClose button {
+  margin: 0px 5px 8px 5px;
+}
+
+td.space {
+  word-break: break-all;
+}
+
+@media (max-width: 850px) {
+
+  mat-header-cell, mat-cell {
+    font-size: small;
+  }
+}
+
+/deep/ div.align-horizontally {
+  display: block;
+  margin: 5px 20px 5px 20px;
+}
+
+@media (max-width: 850px) {
+  /deep/ div.align-horizontally {
+    display: grid;
+    margin-bottom: 10px;
+  }
+}
+
+/deep/ div.align-horizontally > *:nth-child(1) {
+  width: 49.6%;
+  padding: 2px;
+}
+
+@media (max-width: 850px) {
+  /deep/ div.align-horizontally > *:nth-child(1) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+/deep/ div.align-horizontally > *:nth-child(2) {
+  width: 49.6%;
+}
+
+@media (max-width: 850px) {
+  /deep/ div.align-horizontally > *:nth-child(2) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+.btn-edit {
+  cursor: pointer;
+  background-color: #356567;
+  border: 5px;
+  border-radius: 2px;
+  padding: 5px;
+  color: white;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}

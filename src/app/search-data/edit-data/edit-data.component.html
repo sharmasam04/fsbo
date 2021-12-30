@@ -1,0 +1,103 @@
+
+<div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form #updateForm="ngForm" class="dialogForm" fxLayout="column">
+      <h3 class="subheader" color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        Customer Data
+      </h3>
+      <div style="padding: 20px;">
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$" placeholder="Phone No" [(ngModel)]="model.PhoneNo" name="phoneNo" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Full Name" [(ngModel)]="model.FullName" name="fullname" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Address 1" [(ngModel)]="model.Add1" name="address1" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text"  placeholder="Address 2" [(ngModel)]="model.Add2" name="address2" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text"  placeholder="Address 3" [(ngModel)]="model.Add3" name="address3" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Post Code" [(ngModel)]="model.PostCode" name="postcode" />
+          </mat-form-field>
+        </div>
+        <!--<div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput pattern="[0-9]{2}" maxlength="2" placeholder="Age" [(ngModel)]="model.Age" name="age" />
+          </mat-form-field>
+        </div-->
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="State" [(ngModel)]="model.State" name="state" >
+              <mat-option *ngFor="let sts of States" [value]="sts.value">
+                {{ sts.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput type="text" placeholder="IC NO" [(ngModel)]="model.ICNo" name="icNO" />
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="Gender" [(ngModel)]="model.Gender" name="gender" >
+              <mat-option *ngFor="let gender of Genders" [value]="gender.value">
+                {{ gender.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-form-field>
+            <mat-select placeholder="Race" [(ngModel)]="model.Race" name="race" >
+              <mat-option *ngFor="let race of Races" [value]="race.value">
+                {{ race.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="column" class="open-close-container" *ngIf="isReviewed">
+        <div fxFlex="100" class="listTable" style="padding: 15px">
+          <table class="merchantTable" style="border: solid 2px #949494;">
+            <thead>
+              <tr>
+                <th style="width:40%;">Username</th>
+                <th style="width:40%;">Remarks</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of Remarks">
+              <tr>
+                <td style="width:40%;">{{item.Username}} </td>
+                <td style="width:40%;">{{item.Remarks}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <span *ngIf="showError" style="padding-left: 20px;color: red;">{{errorMessage}}</span>
+      <div class="buttonContainer" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button type="button" (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="updateData(updateForm)">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+
